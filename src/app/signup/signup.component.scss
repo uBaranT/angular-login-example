@@ -1,8 +1,10 @@
 mat-card{
     max-width: 600px;
+    max-height: 1000px;
     margin: 2em auto;
     text-align: center;
-    max-height: 600px;
+    border-radius: 8%;
+   
 }
 
 .header{
@@ -23,3 +25,22 @@ mat-card{
     text-align: center;
 }
 
+.ButtonX{
+    position :relative;
+   top:2px;
+    left:45%;
+    padding:3px;
+    border-radius: 15%;
+}
+.Sign
+{
+    padding :4px;
+    border-radius: 10%;
+}
+
+img
+{
+
+   width: 20%;
+   height:20%;
+}
