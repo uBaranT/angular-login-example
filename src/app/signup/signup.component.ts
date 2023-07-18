@@ -30,7 +30,6 @@ export class SignupComponent implements OnInit  {
     .subscribe({
       next: (values) => {
         console.log(values)
-
       }
     })
   }
