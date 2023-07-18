@@ -25,6 +25,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { SidenavbarComponent } from './sidenavbar/sidenavbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { JobListingComponent } from './job-listing/job-listing.component';
+import { SuccessfulPopUpComponent } from './successful-pop-up/successful-pop-up.component';
+import { UnsuccessfulPopUpComponent } from './unsuccessful-pop-up/unsuccessful-pop-up.component';
 
 @NgModule({
     declarations: [
@@ -36,6 +38,8 @@ import { JobListingComponent } from './job-listing/job-listing.component';
         ProfileComponent,
         SidenavbarComponent,
         JobListingComponent,
+        SuccessfulPopUpComponent,
+        UnsuccessfulPopUpComponent,
     ],
 
     providers: [],

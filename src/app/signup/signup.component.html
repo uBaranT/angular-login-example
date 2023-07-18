@@ -58,8 +58,10 @@
             </mat-form-field>
         </div>
 
-        <button mat-flat-button color="primary" class="close-button" routerLink="/login">X</button>
-        <button mat-flat-button color="primary" class="signupbutton"> Sign Up </button>
+         <button mat-flat-button color="primary" class="close-button" routerLink="/login">X</button>
+          <button mat-flat-button color="primary" class="signupbutton" (click)="onSignup"> Sign Up </button>
       </form>
+      
     </mat-card-content>
+   
   </mat-card>
