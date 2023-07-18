@@ -11,7 +11,7 @@ export class SignupComponent implements OnInit  {
 
   hide: boolean = false;
   
-  constructor(private fb: FormBuilder, private rooter: Router) {
+  constructor(private fb: FormBuilder, private router: Router) {
 
   }
 
@@ -20,14 +20,14 @@ export class SignupComponent implements OnInit  {
     .subscribe({
       next: (values) => {
         console.log(values)
-        
+
       }
     })
   }
 
   
   signupForm: FormGroup = this.fb.group({
-    email: ['', [Validators.required]],
+    email: ['', [Validators.required,Validators.email]],
     password:['', [Validators.required, Validators.minLength(6)]],
     name: ['', Validators.required],
     surname: ['', [Validators.required, Validators.minLength(2)]],
@@ -36,21 +36,29 @@ export class SignupComponent implements OnInit  {
 
 
   onSignup() {
-    if (this.signupForm?.invalid){
-      return;
+    if (this.signupForm.valid){
+      this.router.navigate(['/login']);
+    }
+    else {
+      console.log("Please fill the form correctly");
     }
 
     console.log(this.signupForm.value);
   }
 
   gotoLogin() {
-    this.rooter.navigate(['/login'])
+    this.router.navigate(['/login']);
   }
-
-  asdf() {
+  pushRawData(){
     const rawData = this.signupForm.getRawValue()
     console.log(rawData)
   }
-  
-
 }
+
+ /* 
+ asdf() {
+  const rawData = this.signupForm.getRawValue()
+  console.log(rawData)
+  }
+
+  */

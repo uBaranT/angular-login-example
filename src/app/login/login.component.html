@@ -1,8 +1,7 @@
 <mat-card>
     <mat-card-content>
-      <div class="header">
-        <h1>Sign Into Your Account </h1>
-      </div>
+      <img src="../assets/images/issizsiniz.png"class="image"/>
+        <h1 class="header">LOGIN FOR YOUR FUTURE</h1>
       <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
         <div class="emailInput">
           <mat-form-field class="full-width" appearance="outline">
@@ -19,13 +18,11 @@
         </div>
 
         <div>
-          <span>
-            <a class="text-link" class="aLink" routerLink="/auth/forgot-password">Forgot Password?</a>
-          </span>
+        
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Password</mat-label>
             <input formControlName="password" matInput [type]=" hide ? 'password' : 'text'" required />
-            <button  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
+            <button  mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
             [attr.aria-pressed]="hide">
             <mat-icon>
                 {{hide ? 'visibility_off' : 'visibility'}}
@@ -36,10 +33,9 @@
           </mat-error>
         </mat-form-field>
         </div>
-        <button mat-flat-button color="primary">Login</button>
-        <button mat-flat-button color="primary">Sign Up</button>
+        <button mat-flat-button color="primary" class="loginbutton" (click)="onLogin()">Login</button>
+        <button mat-flat-button color="primary" class="signupbutton" routerLink="/signup">Sign Up</button>    
       </form>
-
-
+    
     </mat-card-content>
   </mat-card>
