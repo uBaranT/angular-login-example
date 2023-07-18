@@ -18,6 +18,7 @@ import { SignupComponent } from './signup/signup.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
 
 import { HomepageComponent } from './homepage/homepage.component';
 import { TopnavbarComponent } from './topnavbar/topnavbar.component';
@@ -25,6 +26,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { SidenavbarComponent } from './sidenavbar/sidenavbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { JobListingComponent } from './job-listing/job-listing.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SuccessfulPopUpComponent } from './successful-pop-up/successful-pop-up.component';
+import { UnsuccessfulPopUpComponent } from './unsuccessful-pop-up/unsuccessful-pop-up.component';
 
 @NgModule({
     declarations: [
@@ -36,6 +40,8 @@ import { JobListingComponent } from './job-listing/job-listing.component';
         ProfileComponent,
         SidenavbarComponent,
         JobListingComponent,
+        SuccessfulPopUpComponent,
+        UnsuccessfulPopUpComponent,
     ],
 
     providers: [],
@@ -57,7 +63,9 @@ import { JobListingComponent } from './job-listing/job-listing.component';
         BrowserModule,
         MatSidenavModule,
         MatDividerModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        HttpClientModule,
+        MatListModule
     ],
 })
 export class AppModule { }

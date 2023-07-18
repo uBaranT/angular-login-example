@@ -14,8 +14,7 @@ mat-sidenav {
     text-align: center;
     padding: 16px;
     border-radius: 10px;
-    background-color: rgb(190, 190, 201);
-}
+    background-color: rgb(182, 182, 209);}
 
 mat-sidenav-container{
     height: calc(89vh - 65px);
@@ -95,6 +94,11 @@ mat-divider {
     width: 30%;
     padding-top: 22px;
     
+}
+
+.listing
+{
+    left:5%
 }
 /*
 .about-button {

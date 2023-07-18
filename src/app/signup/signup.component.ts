@@ -1,6 +1,11 @@
+import { SignupService } from './../services/signup.service';
 import { Component, OnInit } from '@angular/core';
 import{ FormGroup,FormBuilder,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SuccessfulPopUpComponent } from '../successful-pop-up/successful-pop-up.component';
+import { UnsuccessfulPopUpComponent } from '../unsuccessful-pop-up/unsuccessful-pop-up.component';
+import { MatDialog } from '@angular/material/dialog';
+import {} from '../services/signup.service';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +16,12 @@ export class SignupComponent implements OnInit  {
 
   hide: boolean = false;
   
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router,private dialogRef:MatDialog) {
+
+  }
+
+  myFunc(){
+    alert("function called");
 
   }
 
@@ -31,19 +41,28 @@ export class SignupComponent implements OnInit  {
     password:['', [Validators.required, Validators.minLength(6)]],
     name: ['', Validators.required],
     surname: ['', [Validators.required, Validators.minLength(2)]],
-    phonenumber: ['', [Validators.required, Validators.minLength(2)]]
   })
 
 
   onSignup() {
     if (this.signupForm.valid){
+
+      this.dialogRef.open(SuccessfulPopUpComponent); 
       this.router.navigate(['/login']);
+
     }
     else {
       console.log("Please fill the form correctly");
+      this.dialogRef.open(UnsuccessfulPopUpComponent);
     }
 
     console.log(this.signupForm.value);
+  }
+
+  saveTutorial(): void {
+    const data = {
+      
+    }
   }
 
   gotoLogin() {

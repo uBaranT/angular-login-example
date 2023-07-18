@@ -45,8 +45,8 @@
         <div>
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Password</mat-label>
-                <input formControlName="password" matInput [type]=" hide ? 'password' : 'text'" required />
-                <button  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="hide">
+                <input formControlName="password"  matInput [type]=" hide ? 'password' : 'text'" required />
+                <button  mat-icon-button matSuffix type="button" (click)="hide = !hide" [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="hide">
                     <mat-icon>
                         {{hide ? 'visibility_off' : 'visibility'}}
                     </mat-icon>
@@ -59,7 +59,7 @@
         </div>
 
         <button mat-flat-button color="primary" class="close-button" routerLink="/login">X</button>
-        <button mat-flat-button color="primary" class="signupbutton"> Sign Up </button>
+        <button mat-flat-button color="primary" class="signupbutton" (click)="myFunc()"> Sign Up </button>
       </form>
     </mat-card-content>
   </mat-card>
