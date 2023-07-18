@@ -28,6 +28,8 @@ import { JobListingComponent } from './job-listing/job-listing.component';
 import { SuccessfulPopUpComponent } from './successful-pop-up/successful-pop-up.component';
 import { UnsuccessfulPopUpComponent } from './unsuccessful-pop-up/unsuccessful-pop-up.component';
 
+import { MatListModule } from '@angular/material/list';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -61,7 +63,8 @@ import { UnsuccessfulPopUpComponent } from './unsuccessful-pop-up/unsuccessful-p
         BrowserModule,
         MatSidenavModule,
         MatDividerModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatListModule
     ],
 })
 export class AppModule { }
