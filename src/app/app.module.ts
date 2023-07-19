@@ -29,6 +29,7 @@ import { JobListingComponent } from './job-listing/job-listing.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SuccessfulPopUpComponent } from './successful-pop-up/successful-pop-up.component';
 import { UnsuccessfulPopUpComponent } from './unsuccessful-pop-up/unsuccessful-pop-up.component';
+import { UserControllerService } from './api/userController.service';
 
 @NgModule({
     declarations: [
@@ -44,7 +45,9 @@ import { UnsuccessfulPopUpComponent } from './unsuccessful-pop-up/unsuccessful-p
         UnsuccessfulPopUpComponent,
     ],
 
-    providers: [],
+    providers: [
+        UserControllerService
+    ],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,

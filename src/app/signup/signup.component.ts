@@ -16,22 +16,29 @@ export class SignupComponent implements OnInit  {
 
   hide: boolean = false;
   
-  constructor(private fb: FormBuilder, private router: Router,private dialogRef:MatDialog) {
+  constructor(private fb: FormBuilder,
+    private router: Router,
+    private dialogRef:MatDialog,
+    private SignupService: SignupService) {
 
   }
 
+  /*
   myFunc(){
     alert("function called");
 
   }
-
+*/
   ngOnInit() {
+    /*
     this.signupForm.valueChanges
     .subscribe({
       next: (values) => {
         console.log(values)
       }
     })
+
+    */
   }
 
   
@@ -43,7 +50,27 @@ export class SignupComponent implements OnInit  {
   })
 
 
-  onSignup() {
+  onSignup(dt: any) {
+      this.SignupService.onSignup(dt).subscribe((response)=> {
+      localStorage.setItem('email',response.email)
+      localStorage.setItem('name',response.name)
+      localStorage.setItem('surname',response.surname)
+      localStorage.setItem('password',response.password)
+
+      console.log(response)
+      });
+
+      this.router.navigateByUrl('login')
+      if(this.signupForm.valid){
+
+      }else {
+        this.router.navigateByUrl('signup')
+        this.dialogRef.open(UnsuccessfulPopUpComponent);
+      }
+    }
+
+
+    /*
     if (this.signupForm.valid){
 
       this.dialogRef.open(SuccessfulPopUpComponent); 
@@ -56,7 +83,8 @@ export class SignupComponent implements OnInit  {
     }
 
     console.log(this.signupForm.value);
-  }
+
+    */
 
   saveTutorial(): void {
     const data = {
@@ -67,6 +95,7 @@ export class SignupComponent implements OnInit  {
   gotoLogin() {
     this.router.navigate(['/login']);
   }
+
   pushRawData(){
     const rawData = this.signupForm.getRawValue()
     console.log(rawData)

@@ -3,7 +3,7 @@
       <div class="signupheader">
         <h1>Sign Up</h1>
       </div>
-      <form (ngSubmit)="onSignup()" name="signupForm" [formGroup]="signupForm">
+      <form (ngSubmit)="onSignup(signupForm.value)" name="signupForm" [formGroup]="signupForm">
         
         <div>
           <mat-form-field class="full-width" appearance="outline">
@@ -27,7 +27,7 @@
             </mat-error>
         </mat-form-field>
       </div>
-
+  
       <div class="emailInput">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Email</mat-label>
@@ -59,7 +59,7 @@
         </div>
 
         <button mat-flat-button color="primary" class="close-button" routerLink="/login">X</button>
-        <button mat-flat-button color="primary" class="signupbutton" (click)="myFunc()"> Sign Up </button>
+        <button mat-flat-button color="primary" class="signupbutton" (click)="onSignup"> Sign Up </button>
       </form>
     </mat-card-content>
   </mat-card>

@@ -2,7 +2,7 @@
     <mat-card-content>
       <img src="../assets/images/issizsiniz.png"class="image"/>
         <h1 class="header">LOGIN FOR YOUR FUTURE</h1>
-      <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
+      <form (ngSubmit)="onLogin(loginForm.value)" name="loginForm" [formGroup]="loginForm">
         <div class="emailInput">
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Email</mat-label>
