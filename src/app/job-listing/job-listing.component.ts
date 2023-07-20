@@ -56,7 +56,7 @@ export class JobListingComponent implements OnInit {
         distinct()
       )
       .subscribe((searchData) => {
-        if (searchData.length > 2) {
+        if (searchData.length) {
           this.jobPostsContollerService.searchJobPostsUsingGET(searchData)
             .subscribe({
               next: (res) => {
