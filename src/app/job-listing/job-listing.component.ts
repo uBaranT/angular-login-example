@@ -1,5 +1,7 @@
 // import { JobListings } from '.models/job-listing';
 import { Component} from '@angular/core';
+import { JobListingService } from '../services/job-listing.service';
+import { JobPosts } from '../model/jobPosts';
 
 interface JobListing {
   id: number;
@@ -17,7 +19,14 @@ interface JobListing {
 })
 
 export class JobListingComponent {
-  jobListings: JobListing [] = [
+  jobListings: JobPosts [] = [];
+
+  constructor(private jobListingService: JobListingService){}
+
+  ngOnInit (){
+    this.jobListings = this.jobListingService.getJobListings();
+  }
+    /*
     {
       id:1,
       title:'Software Developer',
@@ -75,5 +84,5 @@ export class JobListingComponent {
     },
     
   ]
-
+  */
 }
