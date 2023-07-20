@@ -1,0 +1,11 @@
+<div class="resume">
+    <button *ngIf="!editing" (click)="toggleEditing()">Edit Resume</button>
+    
+    <div *ngIf="editing">
+      <textarea [(ngModel)]="resumeText"></textarea>
+    </div>
+    <button *ngIf="editing" (click)="saveResume()">Save</button>
+    <button *ngIf="editing" (click)="cancelEditing()">Cancel</button>
+    <div *ngIf="!editing">{{ resumeText }}</div>
+  </div>
+  

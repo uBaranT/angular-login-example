@@ -1,0 +1,98 @@
+<mat-toolbar color="primary" class="sidetoolbar">
+
+    <button
+    mat-icon-button
+    *ngIf="sidenav.mode === 'over'"
+    (click)="sidenav.toggle()">
+    
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
+  <mat-form-field appearance="fill" class="searchbar">
+        
+    <mat-label>Search...</mat-label>
+    <input matInput [(ngModel)]="searchTerm"/>
+    <mat-icon matPrefix color="accent">search</mat-icon>
+
+</mat-form-field>
+</mat-toolbar>
+
+<mat-sidenav-container>
+    
+    <mat-sidenav #sidenav="matSidenav">
+
+        <p style="font-weight: bold;">Filter</p>
+        <!-- Create City selector-->
+        <!--
+        <button mat-button class="menu-button" routerLink="/homepage">
+            <mat-icon>home</mat-icon>
+            <span>Home (City Selection)</span> Created for 'City' Area
+        </button> -->
+
+        <mat-divider></mat-divider>
+        
+        <p style="font-weight: bold;">Working Preference</p>
+
+        <mat-checkbox>Office</mat-checkbox>
+        <mat-checkbox>Hybrid</mat-checkbox>
+        <mat-checkbox>Remote</mat-checkbox>
+       <!-- <button mat-button class="menu-button" routerLink="/profile">
+            <mat-icon>person</mat-icon>
+            <span>Profile (Working Preference)</span> Created for 'Working Preference' 
+        </button> -->
+        
+
+        <mat-divider></mat-divider>
+
+        <p style="font-weight: bold;">Sector</p>
+        
+        <mat-checkbox>Informatics</mat-checkbox>
+        <mat-checkbox>Logistic</mat-checkbox>
+        <mat-checkbox>Service</mat-checkbox>
+        
+        <!--
+        <button mat-button class="about-button">
+            <mat-icon>info</mat-icon>
+            <span>About (Sector)</span> Created for 'Sector'
+        </button> -->
+
+        <mat-divider></mat-divider>
+
+        <p style="font-weight: bold;">Working Type</p>
+        
+        <mat-checkbox>Full-Time</mat-checkbox>
+        <mat-checkbox>Part-Time</mat-checkbox>
+        <mat-checkbox>Intern</mat-checkbox>
+        
+
+        <!-- 
+        <button mat-button class="about-button">
+            <mat-icon>info</mat-icon>
+            <span>info (Working Type)</span>
+        </button> -->
+
+
+        <mat-divider></mat-divider>
+  
+
+    </mat-sidenav>
+
+    <mat-sidenav-content class="listing">
+         
+           <!--
+            <ul>
+                <li *ngFor="let job of jobListings">
+                    <app-job-listing [jobListing]="job"></app-job-listing>
+                </li>
+            </ul>
+        
+        -->
+        <app-job-listing></app-job-listing>
+    
+        
+    </mat-sidenav-content>
+
+
+  
+    
+</mat-sidenav-container>

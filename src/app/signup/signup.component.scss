@@ -3,8 +3,7 @@ mat-card{
     max-height: 1000px;
     margin: 2em auto;
     text-align: center;
-    border-radius: 8%;
-   
+    max-height: 600px;
 }
 
 .header{
@@ -25,22 +24,3 @@ mat-card{
     text-align: center;
 }
 
-.ButtonX{
-    position :relative;
-   top:2px;
-    left:45%;
-    padding:3px;
-    border-radius: 15%;
-}
-.Sign
-{
-    padding :4px;
-    border-radius: 10%;
-}
-
-img
-{
-
-   width: 20%;
-   height:20%;
-}

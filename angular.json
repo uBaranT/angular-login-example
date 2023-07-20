@@ -70,6 +70,10 @@
             },
             "development": {
               "browserTarget": "try-project:build:development"
+            },
+            "options":{
+              "browserTarget": "move-safe:build",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

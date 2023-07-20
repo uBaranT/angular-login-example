@@ -1,0 +1,24 @@
+<div class="header">
+    <!--<img src="İŞSİZSİNİZ.jpg" alt="Logo" class="logo"> -->
+   <h1>İŞ-SİZSİNİZ !</h1>
+   <button class="logout-btn" (click)="logout()">LOGOUT</button>
+ </div>
+ <div class="header1">
+ <div class="content">
+   <div class="sidebar">
+     <button class="sidebar-button" *ngFor="let item of sidebarItems" (click)="openSection(item)">{{item.title}}</button>
+   </div>
+   
+ 
+   <div *ngIf="selectedSection === 'resume'">
+     <app-resume></app-resume>
+   </div>
+   <div *ngIf="selectedSection === 'applications'">
+     <app-applications></app-applications>
+   </div>
+   <div *ngIf="selectedSection === 'savedItems'">
+     <app-saved-items></app-saved-items>
+   </div>
+ </div>
+ </div>
+ 

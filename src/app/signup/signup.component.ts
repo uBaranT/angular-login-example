@@ -1,6 +1,11 @@
+import { SignupService } from './../services/signup.service';
 import { Component, OnInit } from '@angular/core';
 import{ FormGroup,FormBuilder,Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SuccessfulPopUpComponent } from '../successful-pop-up/successful-pop-up.component';
+import { UnsuccessfulPopUpComponent } from '../unsuccessful-pop-up/unsuccessful-pop-up.component';
+import { MatDialog } from '@angular/material/dialog';
+import {} from '../services/signup.service';
 
 @Component({
   selector: 'app-signup',
@@ -10,15 +15,25 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit  {
 
   hide: boolean = false;
-
-
   
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private rooter: Router) {
 
   }
 
+  /*
+  myFunc(){
+    alert("function called");
+
+  }
+*/
   ngOnInit() {
-    
+    this.signupForm.valueChanges
+    .subscribe({
+      next: (values) => {
+        console.log(values)
+        
+      }
+    })
   }
 
   
@@ -27,30 +42,31 @@ export class SignupComponent implements OnInit  {
     password:['', [Validators.required, Validators.minLength(6)]],
     name: ['', Validators.required],
     surname: ['', [Validators.required, Validators.minLength(2)]],
-    phonenumber: ['', [Validators.required, Validators.minLength(2)]]
   })
 
 
   onSignup() {
-    if (this.signupForm.valid){
-      this.router.navigate(['/login']);
-    }
-    else {
-      console.log('Please fill the form correctly');
+    if (this.signupForm?.invalid){
+      return;
     }
 
-   
+    console.log(this.signupForm.value);
   }
 
   gotoLogin() {
-    
-    this.router.navigate(['/login'])
+    this.rooter.navigate(['/login'])
   }
 
-  pushRawData() {
+  asdf() {
     const rawData = this.signupForm.getRawValue()
     console.log(rawData)
   }
-  
-
 }
+
+ /* 
+ asdf() {
+  const rawData = this.signupForm.getRawValue()
+  console.log(rawData)
+  }
+
+  */
