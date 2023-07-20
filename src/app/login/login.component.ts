@@ -8,7 +8,7 @@ import { UserControllerService } from '../api/userController.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UserResponse } from '../model/userResponse';
 import { User } from '../model/user';
-import { LoginService } from '../services/login.service';
+import { LoginService} from '../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -36,31 +36,44 @@ export class LoginComponent  implements OnInit {
 
   
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
   
   loginForm: FormGroup = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password:['', [Validators.required, Validators.minLength(6)]],
-    })
+    email: ['', [Validators.required, Validators.email]],
+    password:['', [Validators.required, Validators.minLength(6)]],
+  })
 
 
     onLogin(data: any) {
-      this.loginService.onLogin(data).subscribe((response)=> {
+      if(this.loginForm.valid) {
+      this.loginService.onLogin(data).subscribe(
+        (response: UserResponse)=> {
+          console.log(response);
         //if {}...
-        localStorage.setItem('email', response.email )
+        if(response.message === 'Success'){
+        console.log('Login Successful');
+
+        this.router.navigateByUrl('/homepage');
         
-        localStorage.setItem('password', response.password)
-        console.log(response)
-      });
-       
-     
-      if (this.loginForm.valid) {       // this.dialogRef.open(SuccessfulPopUpComponent);//To get the successful pop up
-        this.router.navigateByUrl('homepage')
-      } else {
+        this.dialogRef.open(SuccessfulPopUpComponent);
+
+      } 
+      else {
+        console.log('Login Failed: Invalid Credentials');
+
         this.dialogRef.open(UnsuccessfulPopUpComponent);
       }
+      },
+      (error) => {
+        console.log('Login Failed', error);
+        this.dialogRef.open(UnsuccessfulPopUpComponent);
+      }
+      
+    );
     }
+    else {
+      console.log('Invalid Form');
+    }
+  }
 
 }

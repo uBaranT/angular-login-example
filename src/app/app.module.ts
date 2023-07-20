@@ -30,6 +30,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { SuccessfulPopUpComponent } from './successful-pop-up/successful-pop-up.component';
 import { UnsuccessfulPopUpComponent } from './unsuccessful-pop-up/unsuccessful-pop-up.component';
 import { UserControllerService } from './api/userController.service';
+import { ResumeComponent } from './resume/resume.component';
+import { SavedItemsComponent } from './saved-items/saved-items.component';
+import { ApplicationsComponent } from './applications/applications.component';
 
 @NgModule({
     declarations: [
@@ -43,6 +46,9 @@ import { UserControllerService } from './api/userController.service';
         JobListingComponent,
         SuccessfulPopUpComponent,
         UnsuccessfulPopUpComponent,
+        ResumeComponent,
+        SavedItemsComponent,
+        ApplicationsComponent,
     ],
 
     providers: [

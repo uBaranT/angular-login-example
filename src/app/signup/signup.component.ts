@@ -61,6 +61,7 @@ export class SignupComponent implements OnInit  {
       });
 
       this.router.navigateByUrl('login')
+      this.dialogRef.open (SuccessfulPopUpComponent);
       if(this.signupForm.valid){
 
       }else {

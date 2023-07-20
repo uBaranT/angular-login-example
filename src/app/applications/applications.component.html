@@ -1,0 +1,8 @@
+<div class="applications">
+    <ul>
+      <li *ngFor="let application of applicationsList" (click)="openApplicationDetail(application)">{{ application }}</li>
+    </ul>
+    <button (click)="saveApplications()">Başvuruları Kaydet</button>
+  
+  </div>
+  

@@ -16,6 +16,7 @@ export interface UserResponse {
     email?: string;
     favorites?: Array<JobPosts>;
     id?: number;
+    message?: string;
     name?: string;
     previousApplications?: Array<JobPosts>;
     resume?: string;

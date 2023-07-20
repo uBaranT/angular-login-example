@@ -1,3 +1,4 @@
+
 /**
  * Api Documentation
  * Api Documentation
@@ -14,8 +15,7 @@
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
          HttpResponse, HttpEvent }                           from '@angular/common/http';
-import { CustomHttpUrlEncodingCodec } from '../services/encoder';
-
+import { CustomHttpUrlEncodingCodec } from './../services/encoder';
 import { Observable }                                        from 'rxjs';
 
 import { JobPosts } from '../model/jobPosts';
@@ -28,8 +28,8 @@ import { UserRegisterRequests } from '../model/userRegisterRequests';
 import { UserResponse } from '../model/userResponse';
 import { UserResumeSaveRequests } from '../model/userResumeSaveRequests';
 
-import { BASE_PATH } from '../services/variables';
-import { Configuration } from '../services/configuration';
+import { BASE_PATH } from './../services/variables';
+import { Configuration } from './../services/configuration';
 
 @Injectable()
 export class UserControllerService {
@@ -363,9 +363,9 @@ export class UserControllerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public loginUsingPOST(user: UserLoginRequests, observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public loginUsingPOST(user: UserLoginRequests, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public loginUsingPOST(user: UserLoginRequests, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public loginUsingPOST(user: UserLoginRequests, observe?: 'body', reportProgress?: boolean): Observable<UserResponse>;
+    public loginUsingPOST(user: UserLoginRequests, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<UserResponse>>;
+    public loginUsingPOST(user: UserLoginRequests, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<UserResponse>>;
     public loginUsingPOST(user: UserLoginRequests, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (user === null || user === undefined) {
@@ -392,7 +392,7 @@ export class UserControllerService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.post<string>(`${this.basePath}/user/login`,
+        return this.httpClient.post<UserResponse>(`${this.basePath}/user/login`,
             user,
             {
                 withCredentials: this.configuration.withCredentials,

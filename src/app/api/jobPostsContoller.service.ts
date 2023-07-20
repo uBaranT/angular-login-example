@@ -23,7 +23,6 @@ import { JobPosts } from '../model/jobPosts';
 import { BASE_PATH } from '../services/variables';
 import { Configuration } from '../services/configuration';
 
-
 @Injectable()
 export class JobPostsContollerService {
 
