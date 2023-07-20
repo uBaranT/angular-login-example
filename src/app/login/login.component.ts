@@ -53,6 +53,9 @@ export class LoginComponent  implements OnInit {
         if(response.message === 'Success'){
         console.log('Login Successful');
 
+        localStorage.setItem('email', data.email);
+        //localStorage.setItem('password', data.password);
+
         this.router.navigateByUrl('/homepage');
         
         this.dialogRef.open(SuccessfulPopUpComponent);

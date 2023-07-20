@@ -51,6 +51,7 @@ export class SignupComponent implements OnInit  {
 
 
   onSignup(dt: any) {
+    
       this.SignupService.onSignup(dt).subscribe((response)=> {
       localStorage.setItem('email',response.email)
       localStorage.setItem('name',response.name)

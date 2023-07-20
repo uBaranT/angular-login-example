@@ -14,8 +14,9 @@ export class TopnavbarComponent {
   ) {}
 
   
-  logout(): void {
+  onLogout(): void {
 
+    localStorage.clear();
     this.authService.logout ();
     this.router.navigate(['/login']);
     

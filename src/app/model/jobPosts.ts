@@ -12,13 +12,13 @@
 
 
 export interface JobPosts { 
+    companyName?: string;
     datePosted?: Date;
     description?: string;
     field?: string;
     location?: string;
     position?: string;
     postId?: number;
-    title?: string;
     workHours?: string;
     workType?: string;
 }

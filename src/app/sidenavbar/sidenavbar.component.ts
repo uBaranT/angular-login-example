@@ -1,6 +1,7 @@
-import { Component, ViewChild} from '@angular/core';
+import { Component, ViewChild, OnInit, ElementRef } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import {BreakpointObserver} from '@angular/cdk/layout';
+import { SearchService } from '../services/search.service';
 
 
 @Component({
@@ -11,29 +12,44 @@ import {BreakpointObserver} from '@angular/cdk/layout';
 
 
 
-export class SidenavbarComponent {
+export class SidenavbarComponent implements OnInit {
 
   searchTerm: string = '';
 
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
+
+  @ViewChild('searchTerm')
+  searchInput!: ElementRef;
   
-  constructor (private observer: BreakpointObserver) {}
+  constructor (private observer: BreakpointObserver, private searchService: SearchService) {}
+
+
+  ngOnInit(): void {
+  }
+
+
+  search(e: string): void {
+    this.searchService.searchData.next(e)
+  }
+
   ngAfterViewInit() {
     
-    this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
-      
-      if(res.matches){
-        this.sidenav.mode = 'over';
-        this.sidenav.close();
-      }
-      
-      else {
-        this.sidenav.mode = 'side';
-        this.sidenav.open();
-      }
-    });
+    setTimeout(()=>{
 
+      this.observer.observe(['(max-width: 800px)']).subscribe((res) => {
+      
+        if(res.matches){
+          this.sidenav.mode = 'over';
+          this.sidenav.close();
+        }
+        
+        else {
+          this.sidenav.mode = 'side';
+          this.sidenav.open();
+        }
+      });
+    }, 0)
   }
  
 }

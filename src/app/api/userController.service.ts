@@ -1,4 +1,3 @@
-
 /**
  * Api Documentation
  * Api Documentation
@@ -15,7 +14,7 @@
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
          HttpResponse, HttpEvent }                           from '@angular/common/http';
-import { CustomHttpUrlEncodingCodec } from './../services/encoder';
+import { CustomHttpUrlEncodingCodec } from '../services/encoder';
 import { Observable }                                        from 'rxjs';
 
 import { JobPosts } from '../model/jobPosts';
@@ -28,8 +27,8 @@ import { UserRegisterRequests } from '../model/userRegisterRequests';
 import { UserResponse } from '../model/userResponse';
 import { UserResumeSaveRequests } from '../model/userResumeSaveRequests';
 
-import { BASE_PATH } from './../services/variables';
-import { Configuration } from './../services/configuration';
+import { BASE_PATH } from '../services/variables';
+import { Configuration } from '../services/configuration';
 
 @Injectable()
 export class UserControllerService {

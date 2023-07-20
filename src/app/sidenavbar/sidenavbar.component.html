@@ -11,7 +11,7 @@
   <mat-form-field appearance="fill" class="searchbar">
         
     <mat-label>Search...</mat-label>
-    <input matInput [(ngModel)]="searchTerm"/>
+    <input matInput #searchTerm (keyup)="search(searchTerm.value)" />
     <mat-icon matPrefix color="accent">search</mat-icon>
 
 </mat-form-field>

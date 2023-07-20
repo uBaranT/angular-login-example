@@ -1,8 +1,13 @@
+import { SearchService } from './../services/search.service';
 // import { JobListings } from '.models/job-listing';
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { JobListingService } from '../services/job-listing.service';
 import { JobPosts } from '../model/jobPosts';
+import { JobPostsContollerService } from '../api/jobPostsContoller.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { delay, distinct } from 'rxjs';
 
+/*
 interface JobListing {
   id: number;
   title: string;
@@ -10,6 +15,7 @@ interface JobListing {
   location: string;
   description: string;
 }
+*/
 
 
 @Component({
@@ -18,13 +24,50 @@ interface JobListing {
   styleUrls: ['./job-listing.component.scss']
 })
 
-export class JobListingComponent {
+export class JobListingComponent implements OnInit {
   jobListings: JobPosts [] = [];
 
-  constructor(private jobListingService: JobListingService){}
+  constructor(
+    private jobListingService: JobListingService, 
+    private searchService: SearchService,
+    private jobPostsContollerService: JobPostsContollerService
+  ){}
 
   ngOnInit (){
-    this.jobListings = this.jobListingService.getJobListings();
+    this.getJobListings();
+    this.search()
+  }
+
+  getJobListings(){
+    this.jobListingService.getJobListings().subscribe(
+      (data: JobPosts[]) => {
+        this.jobListings = data;
+      },
+      (error) => {
+        console.log("Error fetching job listings: ", error);
+      }
+    );
+  }
+
+  search() {
+    this.searchService.getSearchData()
+      .pipe(
+        delay(500),
+        distinct()
+      )
+      .subscribe((searchData) => {
+        if (searchData.length > 2) {
+          this.jobPostsContollerService.searchJobPostsUsingGET(searchData)
+            .subscribe({
+              next: (res) => {
+                this.jobListings = res;
+              },
+              error: (err: HttpErrorResponse) => {
+                console.warn(err.error)
+              }
+            })
+        }
+      })
   }
     /*
     {

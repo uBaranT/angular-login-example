@@ -1,20 +1,16 @@
-<div *ngFor="let job of jobListings">
-    <mat-list class="lists">
-        <mat-list-item>
-          <span matListItemTitle>{{job.title}}</span>
-          <span matListItemLine>{{job.description}}</span>
-          <span matListItemLine>Location: {{job.location}}</span> 
-          <button mat-flat-button color="accent" class="favorites">
-          <mat-icon>favorites</mat-icon>
-          </button>
-        <button mat-flat-button color="primary" class="GoToPage">
-          For More
-          <mat-icon>arrow_forward</mat-icon>
-      </button>
-        </mat-list-item>
-  
-      </mat-list>
-  
-  <mat-divider></mat-divider>
+<h2>Job Listings </h2>
+<div>
+<ul>
+  <a *ngFor="let job of jobListings">
+  <li>
+    <strong>Position:</strong> {{job.position}} <br>
+    <strong>Company:</strong> {{job.companyName}} <br>
+    <strong>Location:</strong> {{job.location}} <br>
+    <strong>Description:</strong> {{job.description}} <br>
+    <strong>Work Hours:</strong> {{job.workHours}} <br>
+    <strong>Work Type:</strong> {{job.workType}}<br>
+    <mat-divider></mat-divider>
+  </li>
+</a>
+  </ul>
 </div>
-

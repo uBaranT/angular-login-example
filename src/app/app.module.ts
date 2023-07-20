@@ -26,13 +26,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { SidenavbarComponent } from './sidenavbar/sidenavbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { JobListingComponent } from './job-listing/job-listing.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, withInterceptors } from '@angular/common/http';
 import { SuccessfulPopUpComponent } from './successful-pop-up/successful-pop-up.component';
 import { UnsuccessfulPopUpComponent } from './unsuccessful-pop-up/unsuccessful-pop-up.component';
 import { UserControllerService } from './api/userController.service';
 import { ResumeComponent } from './resume/resume.component';
 import { SavedItemsComponent } from './saved-items/saved-items.component';
 import { ApplicationsComponent } from './applications/applications.component';
+import { JobPostsContollerService } from './api/jobPostsContoller.service';
+import { AuthInterceptor } from './services/auth-interceptor.service';
 
 @NgModule({
     declarations: [
@@ -52,7 +54,9 @@ import { ApplicationsComponent } from './applications/applications.component';
     ],
 
     providers: [
-        UserControllerService
+        UserControllerService,
+        JobPostsContollerService,
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     ],
     bootstrap: [AppComponent],
     imports: [

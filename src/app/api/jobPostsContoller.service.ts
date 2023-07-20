@@ -26,7 +26,7 @@ import { Configuration } from '../services/configuration';
 @Injectable()
 export class JobPostsContollerService {
 
-    protected basePath = 'https://localhost:8080';
+    protected basePath = 'http://localhost:8080';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 
@@ -69,10 +69,6 @@ export class JobPostsContollerService {
     public filterJobPostsUsingGET(cityFilter?: string, fieldFilter?: string, workHoursFilter?: string, workTypeFilter?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<JobPosts>>>;
     public filterJobPostsUsingGET(cityFilter?: string, fieldFilter?: string, workHoursFilter?: string, workTypeFilter?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<JobPosts>>>;
     public filterJobPostsUsingGET(cityFilter?: string, fieldFilter?: string, workHoursFilter?: string, workTypeFilter?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-
-
-
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (cityFilter !== undefined && cityFilter !== null) {
@@ -142,6 +138,95 @@ export class JobPostsContollerService {
 
         return this.httpClient.get<Array<JobPosts>>(`${this.basePath}/jobposts`,
             {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * getDescription
+     * 
+     * @param postId post_id
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getDescriptionUsingGET(postId: number, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public getDescriptionUsingGET(postId: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public getDescriptionUsingGET(postId: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public getDescriptionUsingGET(postId: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (postId === null || postId === undefined) {
+            throw new Error('Required parameter postId was null or undefined when calling getDescriptionUsingGET.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.get<string>(`${this.basePath}/jobposts/getDescription`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * searchJobPosts
+     * 
+     * @param filter filter
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public searchJobPostsUsingGET(filter?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<JobPosts>>;
+    public searchJobPostsUsingGET(filter?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<JobPosts>>>;
+    public searchJobPostsUsingGET(filter?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<JobPosts>>>;
+    public searchJobPostsUsingGET(filter?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (filter !== undefined && filter !== null) {
+            queryParameters = queryParameters.set('filter', <any>filter);
+        }
+
+        let headers = this.defaultHeaders;
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            '*/*'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.get<Array<JobPosts>>(`${this.basePath}/jobposts/search`,
+            {
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
